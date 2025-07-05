@@ -1,5 +1,5 @@
 # ONLINE LIBRARY
-Online library is a CLI application used to access and manage books online. It is built with python and uses mysql to store data.
+This is a CLI application used to access and manage books online. It is built with python and uses mysql to store data.
 
 ## Author: David Gift
 
