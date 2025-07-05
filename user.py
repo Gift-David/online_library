@@ -1,10 +1,10 @@
-'''Authentication and Authorization'''
+'''Module for users Authentication and Authorization'''
 
 import hashlib
 from mysqlconnector import connect_db
 from datetime import datetime
 from validators import InvalidEmailError, validate_email
-from library import view_books, add_book, search_book, delete_book, assign_admin, view_users
+from library import view_books, add_book, search_book, delete_book, assign_admin, view_users, revoke_admin
 from menu import menu
 
 def hash_password(password:str) -> str:
@@ -89,21 +89,21 @@ def user_dashboard(email):
     user = user_cursor.fetchone()
     if user[0].lower().strip() == "user":
         while True:
-            menu(f"Welcome  {user[1]}!", ["View books", "search book", "logout"])
+            menu(f"---Welcome  {user[1]}!---", ["View books", "search book", "logout"])
             choice = int(input("Enter option: "))
             if choice == 1:
                 view_books()
             elif choice == 2:
                 search_book()
             elif choice == 3:
-                print("Logging out....")
+                print("Logging out...")
                 break
             else:
                 print("Invalid Input")
         
     elif user[0].lower().strip() == "admin":
         while True:
-            menu(f"Welcome {user[1]}!", ["View books", "search book", "add book", "delete book", "assign admin", "view users", "logout"])
+            menu(f"---Welcome {user[1]}!---", ["View books", "search book", "add book", "delete book", "assign admin", "revoke admin", "view users", "logout"])
             choice = int(input("Enter option: "))
             if choice == 1:
                 view_books()
@@ -116,8 +116,11 @@ def user_dashboard(email):
             elif choice == 5:
                 assign_admin()
             elif choice == 6:
-                view_users()
+                revoke_admin()
             elif choice == 7:
+                view_users()
+            elif choice == 8:
+                print("logging out...")
                 break
             else:
                 print("Invalid Input")

@@ -3,14 +3,14 @@ from menu import menu
 
 def main():
     while True:
-        menu("Welcome to Your Online Library", ["login", "sign up", "exit"])
+        menu("---Welcome to Your Online Library---", ["login", "sign up", "exit"])
         choice = int(input("Select an option: "))
         if choice == 1:
             login()
         elif choice == 2:
             sign_up()
         elif choice == 3:
-            print("Exiting ypur online library!")
+            print("Exiting your online library!")
             break
         else:
             print("Invalid option")

@@ -1,4 +1,5 @@
-'''Module for interacting with books'''
+'''Module for interacting with the mysql database'''
+
 from mysqlconnector import connect_db
 from validators import InvalidEmailError, validate_email
 
@@ -116,10 +117,8 @@ def view_users():
         print(f"{i[0]:<10} | {i[1]:<10}")
 
     print("----List of Users----")
-    print(f"{'First Name':<20} | {'Last Name':<20} | {'Email':<50} | {'Status':<10} | {'Registered Date':<30}")
+    print(f"{'First Name':<20} | {'Last Name':<20} | {'Email':<50} | {'Role':<10} | {'Registered Date':<30}")
     for i in results:
-        print(f"{i[0]:<20} | {i[1]:<20} | {i[2]:<50} | {i[3]:<10} | {i[4]:<30}")
+        print(f"{i[0]:<20} | {i[1]:<20} | {i[2]:<50} | {i[3]:<10} | {i[4]}")
     connection.close()
-    my_cursor.close()
-
-    
+    my_cursor.close() 
