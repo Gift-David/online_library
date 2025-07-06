@@ -95,7 +95,7 @@ def revoke_admin():
     connection = connect_db()
     my_cursor = connection.cursor()
     my_cursor.execute(sql)
-    print("User is now an admin")
+    print("Admin access successfully revoked")
     connection.commit()
     connection.close()
     my_cursor.close()

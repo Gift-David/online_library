@@ -71,7 +71,7 @@ def login():
     user_cursor.execute(sql)
     hashed = user_cursor.fetchone()
 
-    if not verify_password(password, hashed[0]):
+    if hashed == None or not verify_password(password, hashed[0]):
         print("Invalid Email or Password")
     else:
         print("login successfully")
