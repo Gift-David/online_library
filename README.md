@@ -5,8 +5,9 @@ This is a CLI application used to access and manage books online. It is built wi
 
 ## Skills Implimented
 - Python functions, conditional statements, loops
-- Modular programming
-- MySQL
+- Modular Programming
+- MySQL database management
+- Exception Handling
 
 ## Features
 ### General Features
