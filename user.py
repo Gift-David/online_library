@@ -35,7 +35,7 @@ def sign_up():
             print("Oooops! Password mismatch!")
             return True
         hash = hash_password(password)
-        status = "user"
+        role = "user"
         created_at = datetime.now()
         sql1 = "SELECT email FROM users"
         user_cursor.execute(sql1)
@@ -46,8 +46,8 @@ def sign_up():
                 print("Email already exists!")
                 return
         
-        sql = "INSERT INTO users (firstname, lastname, email, status, password_hash, created_at) VALUES (%s, %s, %s, %s, %s, %s)"
-        val = (firstname, lastname, email, status, hash, created_at)
+        sql = "INSERT INTO users (firstname, lastname, email, role, password_hash, created_at) VALUES (%s, %s, %s, %s, %s, %s)"
+        val = (firstname, lastname, email, role, hash, created_at)
         
         user_cursor.execute(sql, val)
         connection.commit()
@@ -82,7 +82,7 @@ def login():
 
 
 def user_dashboard(email):
-    sql = f"SELECT status, FirstName FROM users WHERE email = '{email}'"
+    sql = f"SELECT role, FirstName FROM users WHERE email = '{email}'"
     connection = connect_db()
     user_cursor = connection.cursor()
     user_cursor.execute(sql)

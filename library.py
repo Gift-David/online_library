@@ -75,7 +75,7 @@ def assign_admin():
     except InvalidEmailError as err:
         print(f"Error: {err}")
         return
-    sql = f"UPDATE users SET status = 'admin' WHERE email = '{email}'"
+    sql = f"UPDATE users SET role = 'admin' WHERE email = '{email}'"
     connection = connect_db()
     my_cursor = connection.cursor()
     my_cursor.execute(sql)
@@ -91,7 +91,7 @@ def revoke_admin():
     except InvalidEmailError as err:
         print(f"Error: {err}")
         return
-    sql = f"UPDATE users SET status = 'user' WHERE email = '{email}'"
+    sql = f"UPDATE users SET role = 'user' WHERE email = '{email}'"
     connection = connect_db()
     my_cursor = connection.cursor()
     my_cursor.execute(sql)
@@ -102,8 +102,8 @@ def revoke_admin():
 
 def view_users():
     print("List of Books")
-    sql1 = "SELECT status, COUNT(*) AS UserCount FROM users GROUP BY status ORDER BY status;"
-    sql = "SELECT FirstName, LastName, email, status, created_at FROM Users"
+    sql1 = "SELECT role, COUNT(*) AS UserCount FROM users GROUP BY role ORDER BY role;"
+    sql = "SELECT FirstName, LastName, email, role, created_at FROM Users"
     connection = connect_db()
     my_cursor = connection.cursor()
     my_cursor.execute(sql)
